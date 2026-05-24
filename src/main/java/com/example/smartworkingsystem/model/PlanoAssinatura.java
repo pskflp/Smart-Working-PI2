@@ -34,6 +34,8 @@ public class PlanoAssinatura {
     public void setDataFim(Date dataFim) { this.dataFim = dataFim; }
     public Boolean getRenovacaoAutomatica() { return renovacaoAutomatica; }
     public void setRenovacaoAutomatica(Boolean renovacaoAutomatica) { this.renovacaoAutomatica = renovacaoAutomatica; }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
     public Membro getMembro() { return membro; }
     public void setMembro(Membro membro) { this.membro = membro; }
 

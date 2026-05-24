@@ -28,8 +28,8 @@ public class Reserva {
 
     public Reserva() {}
 
-    public Reserva(Usuario usuario, Espaco espaco, LocalDateTime dataInicio, LocalDateTime dataFim, TipoReserva tipo) {
-        this.usuario = usuario;
+    public Reserva(Membro membro, Espaco espaco, LocalDateTime dataInicio, LocalDateTime dataFim, TipoReserva tipo) {
+        this.membro = membro;
         this.espaco = espaco;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
@@ -39,8 +39,8 @@ public class Reserva {
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
-    public Usuario getUsuario() { return usuario; }
-    public void setUsuario(Usuario usuario) { this.usuario = usuario; }
+    public Membro getMembro() { return membro; }
+    public void setMembro(Membro membro) { this.membro = membro; }
     public Espaco getEspaco() { return espaco; }
     public void setEspaco(Espaco espaco) { this.espaco = espaco; }
     public LocalDateTime getDataInicio() { return dataInicio; }
@@ -82,5 +82,8 @@ public class Reserva {
 
     public void cancelarReserva() {
         this.status = "CANCELADO";
+    }
+}
+
     }
 }

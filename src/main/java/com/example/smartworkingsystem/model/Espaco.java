@@ -24,8 +24,9 @@ public class Espaco {
 
     public Espaco() {}
 
-    public Espaco(Long id, String nome, String tipo, Double precoHora, Double precoDia, Double precoMes, String fotoBase64, String endereco, String politicaCancelamento) {
+    public Espaco(Long id, String identificadorUnico, String nome, String tipo, Double precoHora, Double precoDia, Double precoMes, String fotoBase64, String endereco, String politicaCancelamento) {
         this.id = id;
+        this.identificadorUnico = identificadorUnico;
         this.nome = nome;
         this.tipo = tipo;
         this.precoHora = precoHora;
@@ -39,6 +40,8 @@ public class Espaco {
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
+    public String getIdentificadorUnico() { return identificadorUnico; }
+    public void setIdentificadorUnico(String identificadorUnico) { this.identificadorUnico = identificadorUnico; }
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
     public String getEndereco() { return endereco; }

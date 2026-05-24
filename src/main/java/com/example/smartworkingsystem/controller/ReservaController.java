@@ -61,7 +61,7 @@ public class ReservaController {
 
     @GetMapping("/usuario/{id}")
     public ResponseEntity<List<Reserva>> getReservasPorUsuario(@PathVariable Long id) {
-        return new ResponseEntity<>(reservaRepository.findByUsuarioId(id), HttpStatus.OK);
+        return new ResponseEntity<>(reservaRepository.findByMembroId(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

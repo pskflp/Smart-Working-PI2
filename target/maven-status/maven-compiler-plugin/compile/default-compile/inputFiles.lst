@@ -1,0 +1,12 @@
+/home/isabele/SmartWorking-System/src/main/java/com/example/smartworkingsystem/model/Administrador.java
+/home/isabele/SmartWorking-System/src/main/java/com/example/smartworkingsystem/controller/EspacoController.java
+/home/isabele/SmartWorking-System/src/main/java/com/example/smartworkingsystem/controller/ReservaController.java
+/home/isabele/SmartWorking-System/src/main/java/com/example/smartworkingsystem/DataSeeder.java
+/home/isabele/SmartWorking-System/src/main/java/com/example/smartworkingsystem/SmartWorkingSystemApplication.java
+/home/isabele/SmartWorking-System/src/main/java/com/example/smartworkingsystem/config/WebConfig.java
+/home/isabele/SmartWorking-System/src/main/java/com/example/smartworkingsystem/model/Reserva.java
+/home/isabele/SmartWorking-System/src/main/java/com/example/smartworkingsystem/model/TipoReserva.java
+/home/isabele/SmartWorking-System/src/main/java/com/example/smartworkingsystem/controller/UsuarioController.java
+/home/isabele/SmartWorking-System/src/main/java/com/example/smartworkingsystem/model/Usuario.java
+/home/isabele/SmartWorking-System/src/main/java/com/example/smartworkingsystem/model/Membro.java
+/home/isabele/SmartWorking-System/src/main/java/com/example/smartworkingsystem/model/Espaco.java

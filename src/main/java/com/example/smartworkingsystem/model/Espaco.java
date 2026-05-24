@@ -1,0 +1,52 @@
+package com.example.smartworkingsystem.model;
+
+public class Espaco {
+    private Long id;
+    private String nome;
+    private String endereco;
+    private Double precoHora;
+    private Double precoDia;
+    private Double precoMes;
+    private String status;
+    private String fotoBase64;
+    private String tipo;
+    private String politicaCancelamento;
+
+    public Espaco() {}
+
+    public Espaco(Long id, String nome, String tipo, Double precoHora, Double precoDia, Double precoMes, String fotoBase64, String endereco, String politicaCancelamento) {
+        this.id = id;
+        this.nome = nome;
+        this.tipo = tipo;
+        this.precoHora = precoHora;
+        this.precoDia = precoDia;
+        this.precoMes = precoMes;
+        this.fotoBase64 = fotoBase64;
+        this.endereco = endereco;
+        this.politicaCancelamento = politicaCancelamento;
+        this.status = "DISPONÍVEL";
+    }
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+    public String getEndereco() { return endereco; }
+    public void setEndereco(String endereco) { this.endereco = endereco; }
+    public Double getPrecoHora() { return precoHora; }
+    public void setPrecoHora(Double precoHora) { this.precoHora = precoHora; }
+    public Double getPrecoDia() { return precoDia; }
+    public void setPrecoDia(Double precoDia) { this.precoDia = precoDia; }
+    public Double getPrecoMes() { return precoMes; }
+    public void setPrecoMes(Double precoMes) { this.precoMes = precoMes; }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
+    public String getFotoBase64() { return fotoBase64; }
+    public void setFotoBase64(String fotoBase64) { this.fotoBase64 = fotoBase64; }
+    public String getTipo() { return tipo; }
+    public void setTipo(String tipo) { this.tipo = tipo; }
+    public String getPoliticaCancelamento() { return politicaCancelamento; }
+    public void setPoliticaCancelamento(String politicaCancelamento) { this.politicaCancelamento = politicaCancelamento; }
+
+    public void consultarDisponibilidade() {}
+}

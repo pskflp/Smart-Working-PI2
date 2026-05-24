@@ -1,12 +1,22 @@
 package com.example.smartworkingsystem.model;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "evento")
 public class Evento {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String titulo;
     private String descricao;
     private LocalDateTime dataEvento;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_admin")
+    private Administrador administrador;
 
     public Evento() {}
 
@@ -18,6 +28,8 @@ public class Evento {
     public void setDescricao(String descricao) { this.descricao = descricao; }
     public LocalDateTime getDataEvento() { return dataEvento; }
     public void setDataEvento(LocalDateTime dataEvento) { this.dataEvento = dataEvento; }
+    public Administrador getAdministrador() { return administrador; }
+    public void setAdministrador(Administrador administrador) { this.administrador = administrador; }
 
     public void criarEvento() {}
     public void notificarMembros() {}

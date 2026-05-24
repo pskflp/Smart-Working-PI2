@@ -1,30 +1,28 @@
 package com.example.smartworkingsystem.controller;
 
-import com.example.smartworkingsystem.model.*;
-
+import com.example.smartworkingsystem.model.Espaco;
+import com.example.smartworkingsystem.repository.EspacoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/espacos")
 public class EspacoController {
 
-    public static List<Espaco> espacos = new ArrayList<>();
-    private static Long nextEspacoId = 1L;
+    @Autowired
+    private EspacoRepository espacoRepository;
 
     @GetMapping
     public ResponseEntity<List<Espaco>> listarEspacos() {
-        return new ResponseEntity<>(espacos, HttpStatus.OK);
+        return new ResponseEntity<>(espacoRepository.findAll(), HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity<Espaco> cadastrarEspaco(@RequestBody Espaco espaco) {
-        espaco.setId(nextEspacoId++);
-        espacos.add(espaco);
-        return new ResponseEntity<>(espaco, HttpStatus.CREATED);
+        return new ResponseEntity<>(espacoRepository.save(espaco), HttpStatus.CREATED);
     }
 }

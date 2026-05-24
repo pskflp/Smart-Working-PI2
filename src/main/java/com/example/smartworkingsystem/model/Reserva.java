@@ -1,15 +1,29 @@
 package com.example.smartworkingsystem.model;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "reserva")
 public class Reserva {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_usuario")
     private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_espaco")
     private Espaco espaco;
+
     private LocalDateTime dataInicio;
     private LocalDateTime dataFim;
     private Double valorTotal;
     private String status;
+
+    @Enumerated(EnumType.STRING)
     private TipoReserva tipo;
 
     public Reserva() {}

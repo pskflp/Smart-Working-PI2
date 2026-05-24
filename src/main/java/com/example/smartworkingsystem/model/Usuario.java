@@ -1,11 +1,24 @@
 package com.example.smartworkingsystem.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "usuario")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Usuario {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
+
+    @Column(unique = true)
     private String email;
+
     private String senha;
     private String telefone;
+
+    public Usuario() {}
 
     public Usuario(String nome, String email, String senha) {
         this.nome = nome;

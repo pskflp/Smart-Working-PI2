@@ -1,7 +1,14 @@
 package com.example.smartworkingsystem.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "membro")
+@PrimaryKeyJoinColumn(name = "id_membro")
 public class Membro extends Usuario {
     private String endereco;
+
+    public Membro() {}
 
     public Membro(String nome, String email, String senha) {
         super(nome, email, senha);

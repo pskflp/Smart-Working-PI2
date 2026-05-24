@@ -1,14 +1,24 @@
 package com.example.smartworkingsystem.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "espaco")
 public class Espaco {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
     private String endereco;
     private Double precoHora;
     private Double precoDia;
     private Double precoMes;
     private String status;
+
+    @Column(columnDefinition = "LONGTEXT")
     private String fotoBase64;
+
     private String tipo;
     private String politicaCancelamento;
 

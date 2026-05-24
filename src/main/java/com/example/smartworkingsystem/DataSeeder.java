@@ -1,13 +1,22 @@
 package com.example.smartworkingsystem;
 
-import com.example.smartworkingsystem.controller.*;
-import com.example.smartworkingsystem.model.*;
-import com.example.smartworkingsystem.repository.*;
+
+import java.time.LocalDateTime;
+
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-import java.time.LocalDateTime;
+import com.example.smartworkingsystem.model.Administrador;
+import com.example.smartworkingsystem.model.Espaco;
+import com.example.smartworkingsystem.model.Membro;
+import com.example.smartworkingsystem.model.Reserva;
+import com.example.smartworkingsystem.model.TipoReserva;
+import com.example.smartworkingsystem.model.Usuario;
+import com.example.smartworkingsystem.repository.EspacoRepository;
+import com.example.smartworkingsystem.repository.ReservaRepository;
+import com.example.smartworkingsystem.repository.UsuarioRepository;
 
 @Component
 public class DataSeeder {

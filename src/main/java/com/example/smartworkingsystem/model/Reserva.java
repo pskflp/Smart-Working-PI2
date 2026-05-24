@@ -54,7 +54,33 @@ public class Reserva {
     public TipoReserva getTipo() { return tipo; }
     public void setTipo(TipoReserva tipo) { this.tipo = tipo; }
 
-    public void calcularValorTotal() {}
-    public void confirmarReserva() {}
-    public void cancelarReserva() {}
+    public void calcularValorTotal() {
+        if (espaco == null || tipo == null || dataInicio == null || dataFim == null) return;
+        
+        long duracao;
+        switch (tipo) {
+            case HORA:
+                duracao = java.time.Duration.between(dataInicio, dataFim).toHours();
+                this.valorTotal = duracao * espaco.getPrecoHora();
+                break;
+            case DIA:
+                duracao = java.time.ChronoUnit.DAYS.between(dataInicio.toLocalDate(), dataFim.toLocalDate());
+                if (duracao == 0) duracao = 1;
+                this.valorTotal = duracao * espaco.getPrecoDia();
+                break;
+            case MES:
+                duracao = java.time.ChronoUnit.MONTHS.between(dataInicio.toLocalDate(), dataFim.toLocalDate());
+                if (duracao == 0) duracao = 1;
+                this.valorTotal = duracao * espaco.getPrecoMes();
+                break;
+        }
+    }
+
+    public void confirmarReserva() {
+        this.status = "CONFIRMADO";
+    }
+
+    public void cancelarReserva() {
+        this.status = "CANCELADO";
+    }
 }

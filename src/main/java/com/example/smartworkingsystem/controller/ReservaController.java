@@ -34,6 +34,17 @@ public class ReservaController {
             return new ResponseEntity<>("Espaço não encontrado", HttpStatus.NOT_FOUND);
         }
 
+        // Validação de Conflito de Horário
+        boolean conflito = reservaRepository.existeConflito(
+            espacoCompleto.getId(), 
+            reserva.getDataInicio(), 
+            reserva.getDataFim()
+        );
+
+        if (conflito) {
+            return new ResponseEntity<>("Conflito de reserva: Este espaço já está ocupado neste período.", HttpStatus.CONFLICT);
+        }
+
         reserva.setEspaco(espacoCompleto);
         reserva.calcularValorTotal();
         reserva.confirmarReserva();

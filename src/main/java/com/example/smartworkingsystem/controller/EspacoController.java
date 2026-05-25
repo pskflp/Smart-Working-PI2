@@ -17,8 +17,23 @@ public class EspacoController {
     private EspacoRepository espacoRepository;
 
     @GetMapping
-    public ResponseEntity<List<Espaco>> listarEspacos() {
+    public ResponseEntity<List<Espaco>> listarEspacos(@RequestParam(required = false) String status) {
+        if (status != null) {
+            return new ResponseEntity<>(espacoRepository.findAll().stream()
+                .filter(e -> e.getStatus().equalsIgnoreCase(status))
+                .toList(), HttpStatus.OK);
+        }
         return new ResponseEntity<>(espacoRepository.findAll(), HttpStatus.OK);
+    }
+
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<Espaco> atualizarStatus(@PathVariable Long id, @RequestParam String novoStatus) {
+        return espacoRepository.findById(id)
+                .map(espaco -> {
+                    espaco.setStatus(novoStatus.toUpperCase());
+                    return new ResponseEntity<>(espacoRepository.save(espaco), HttpStatus.OK);
+                })
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping

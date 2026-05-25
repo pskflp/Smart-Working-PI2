@@ -34,6 +34,11 @@ public class ReservaController {
             return new ResponseEntity<>("Espaço não encontrado", HttpStatus.NOT_FOUND);
         }
 
+        // Validação de Status do Espaço (RF010)
+        if (!"DISPONÍVEL".equalsIgnoreCase(espacoCompleto.getStatus())) {
+            return new ResponseEntity<>("Este espaço não está disponível para reserva no momento (Status: " + espacoCompleto.getStatus() + ")", HttpStatus.FORBIDDEN);
+        }
+
         // Validação de Conflito de Horário
         boolean conflito = reservaRepository.existeConflito(
             espacoCompleto.getId(), 

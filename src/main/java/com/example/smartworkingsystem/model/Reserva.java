@@ -2,6 +2,7 @@ package com.example.smartworkingsystem.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 @Entity
 @Table(name = "reserva")
@@ -28,8 +29,8 @@ public class Reserva {
 
     public Reserva() {}
 
-    public Reserva(Membro membro, Espaco espaco, LocalDateTime dataInicio, LocalDateTime dataFim, TipoReserva tipo) {
-        this.membro = membro;
+    public Reserva(Usuario usuario, Espaco espaco, LocalDateTime dataInicio, LocalDateTime dataFim, TipoReserva tipo) {
+        this.usuario = usuario;
         this.espaco = espaco;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
@@ -39,8 +40,8 @@ public class Reserva {
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
-    public Membro getMembro() { return membro; }
-    public void setMembro(Membro membro) { this.membro = membro; }
+    public Usuario getUsuario() { return usuario; }
+    public void setUsuario(Usuario usuario) { this.usuario = usuario; }
     public Espaco getEspaco() { return espaco; }
     public void setEspaco(Espaco espaco) { this.espaco = espaco; }
     public LocalDateTime getDataInicio() { return dataInicio; }
@@ -82,8 +83,5 @@ public class Reserva {
 
     public void cancelarReserva() {
         this.status = "CANCELADO";
-    }
-}
-
     }
 }

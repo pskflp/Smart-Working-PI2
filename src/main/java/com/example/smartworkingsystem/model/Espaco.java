@@ -1,6 +1,11 @@
 package com.example.smartworkingsystem.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "espaco")
@@ -10,6 +15,7 @@ public class Espaco {
     private Long id;
 
     private String nome;
+    private String identificadorUnico;
     private String endereco;
     private Double precoHora;
     private Double precoDia;

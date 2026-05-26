@@ -44,11 +44,11 @@ const GerenciamentoOcupacao = () => {
           {reservas.map((reserva) => (
             <tr key={reserva.id}>
               <td>{reserva.id}</td>
-              <td>{new Date(reserva.inicio).toLocaleDateString()}</td>
+              <td>{new Date(reserva.dataInicio).toLocaleString()}</td>
               <td>{reserva.espaco.nome}</td>
-              <td>{reserva.tipoReserva}</td>
-              <td>R$ {reserva.valorTotal}</td>
-              <td>{reserva.usuario.nome}</td>
+              <td>{reserva.tipo}</td>
+              <td>R$ {reserva.valorTotal?.toFixed(2)}</td>
+              <td>{reserva.membro?.nome || "N/A"}</td>
             </tr>
           ))}
         </tbody>

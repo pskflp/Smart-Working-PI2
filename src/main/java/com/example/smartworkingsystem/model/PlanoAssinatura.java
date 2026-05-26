@@ -15,6 +15,7 @@ public class PlanoAssinatura {
     private Date dataInicio;
     private Date dataFim;
     private Boolean renovacaoAutomatica;
+    private String status;
 
     @ManyToOne
     @JoinColumn(name = "fk_membro")

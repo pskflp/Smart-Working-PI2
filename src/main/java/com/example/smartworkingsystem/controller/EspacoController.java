@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/espacos")
@@ -21,7 +22,7 @@ public class EspacoController {
         if (status != null) {
             return new ResponseEntity<>(espacoRepository.findAll().stream()
                 .filter(e -> e.getStatus().equalsIgnoreCase(status))
-                .toList(), HttpStatus.OK);
+                .collect(Collectors.toList()), HttpStatus.OK);
         }
         return new ResponseEntity<>(espacoRepository.findAll(), HttpStatus.OK);
     }

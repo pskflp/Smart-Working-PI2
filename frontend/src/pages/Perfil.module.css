@@ -54,3 +54,72 @@
 .deleteButton:hover {
   background-color: #c82333;
 }
+
+.planoSection {
+  margin-top: 3rem;
+  width: 100%;
+  max-width: 500px;
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.planoSection h3 {
+  margin-top: 0;
+  color: #333;
+  text-align: center;
+}
+
+.planoCard {
+  background: white;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.cancelarPlanoBtn {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  background: #ffc107;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.planosGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.planoOption {
+  background: white;
+  padding: 1rem;
+  border-radius: 4px;
+  text-align: center;
+  border: 1px solid #e9ecef;
+}
+
+.planoOption h4 {
+  margin: 0;
+  color: #007bff;
+}
+
+.planoOption button {
+  width: 100%;
+  padding: 0.5rem;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.planoOption button:hover {
+  background: #218838;
+}
+

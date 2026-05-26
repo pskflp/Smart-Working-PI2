@@ -3,6 +3,8 @@ package com.example.smartworkingsystem.controller;
 import com.example.smartworkingsystem.model.*;
 import com.example.smartworkingsystem.repository.ReservaRepository;
 import com.example.smartworkingsystem.repository.EspacoRepository;
+import com.example.smartworkingsystem.repository.PagamentoRepository;
+import com.example.smartworkingsystem.repository.FaturaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -77,7 +79,12 @@ public class ReservaController {
 
     @GetMapping("/usuario/{id}")
     public ResponseEntity<List<Reserva>> getReservasPorUsuario(@PathVariable Long id) {
-        return new ResponseEntity<>(reservaRepository.findByMembroId(id), HttpStatus.OK);
+        return new ResponseEntity<>(reservaRepository.findByUsuarioId(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/espaco/{id}")
+    public ResponseEntity<List<Reserva>> getReservasPorEspaco(@PathVariable Long id) {
+        return new ResponseEntity<>(reservaRepository.findByEspacoId(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

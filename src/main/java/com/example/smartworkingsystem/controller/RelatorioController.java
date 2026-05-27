@@ -2,6 +2,8 @@ package com.example.smartworkingsystem.controller;
 
 import com.example.smartworkingsystem.model.Pagamento;
 import com.example.smartworkingsystem.repository.PagamentoRepository;
+import com.example.smartworkingsystem.repository.UsuarioRepository;
+import com.example.smartworkingsystem.repository.ReservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,12 @@ public class RelatorioController {
 
     @Autowired
     private PagamentoRepository pagamentoRepository;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private ReservaRepository reservaRepository;
 
     @GetMapping("/financeiro")
     public ResponseEntity<Map<String, Object>> getRelatorioFinanceiro() {
@@ -51,7 +59,9 @@ public class RelatorioController {
         relatorio.put("faturamentoPorEspaco", faturamentoPorEspaco);
         relatorio.put("faturamentoPorPlano", faturamentoPorPlano);
         relatorio.put("totalPagamentos", pagamentos.size());
+        relatorio.put("totalUsuarios", usuarioRepository.count());
+        relatorio.put("totalReservas", reservaRepository.count());
 
-        return new ResponseEntity<>(relatorio, HttpStatus.OK);
+        return ResponseEntity.ok(relatorio);
     }
 }

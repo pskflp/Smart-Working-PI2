@@ -65,12 +65,12 @@ public class Reserva {
                 this.valorTotal = duracao * espaco.getPrecoHora();
                 break;
             case DIA:
-                duracao = java.time.ChronoUnit.DAYS.between(dataInicio.toLocalDate(), dataFim.toLocalDate());
+                duracao = ChronoUnit.DAYS.between(dataInicio.toLocalDate(), dataFim.toLocalDate());
                 if (duracao == 0) duracao = 1;
                 this.valorTotal = duracao * espaco.getPrecoDia();
                 break;
             case MES:
-                duracao = java.time.ChronoUnit.MONTHS.between(dataInicio.toLocalDate(), dataFim.toLocalDate());
+                duracao = ChronoUnit.MONTHS.between(dataInicio.toLocalDate(), dataFim.toLocalDate());
                 if (duracao == 0) duracao = 1;
                 this.valorTotal = duracao * espaco.getPrecoMes();
                 break;

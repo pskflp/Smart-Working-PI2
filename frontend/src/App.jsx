@@ -10,6 +10,7 @@ import Pagamento from "./pages/Pagamento";
 import LandingPage from "./pages/LandingPage";
 import MinhasReservas from "./pages/MinhasReservas";
 import GerenciamentoOcupacao from "./pages/GerenciamentoOcupacao";
+import Planos from "./pages/Planos";
 import Navbar from "./components/Navbar";
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -74,6 +75,14 @@ function App() {
           element={
             <PrivateRoute>
               <GerenciamentoOcupacao />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/planos"
+          element={
+            <PrivateRoute>
+              <Planos />
             </PrivateRoute>
           }
         />

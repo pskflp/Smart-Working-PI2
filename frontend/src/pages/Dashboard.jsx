@@ -44,7 +44,7 @@ const Dashboard = () => {
 
   return (
     <div className={styles.container}>
-      <h2>Dashboard</h2>
+      <h2>Catálogo de Espaços</h2>
       <div className={styles.grid}>
         {espacos.map((espaco) => (
           <div key={espaco.id} className={`${styles.card} ${espaco.status !== "DISPONÍVEL" ? styles.blocked : ""}`}>

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -25,7 +26,13 @@ public class UsuarioController {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    @GetMapping
+    public ResponseEntity<List<Usuario>> listarUsuarios() {
+        return ResponseEntity.ok(usuarioRepository.findAll());
+    }
+
     private String hashSenha(String senha) {
+        if (senha == null) return "";
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             byte[] encodedhash = digest.digest(senha.getBytes());
@@ -45,18 +52,21 @@ public class UsuarioController {
     public ResponseEntity<Usuario> cadastrarUsuario(@RequestBody Usuario usuario) {
         usuario.setSenha(hashSenha(usuario.getSenha()));
         Usuario salvo = usuarioRepository.save(usuario);
-        return new ResponseEntity<>(salvo, HttpStatus.CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED).body(salvo);
     }
 
     @PostMapping("/login")
     public ResponseEntity<Usuario> login(@RequestBody Usuario usuario) {
+        if (usuario.getEmail() == null || usuario.getSenha() == null) {
+            return ResponseEntity.badRequest().build();
+        }
         Optional<Usuario> usuarioOptional = usuarioRepository.findByEmail(usuario.getEmail());
         String senhaHash = hashSenha(usuario.getSenha());
 
         if (usuarioOptional.isPresent() && usuarioOptional.get().getSenha().equals(senhaHash)) {
-            return new ResponseEntity<>(usuarioOptional.get(), HttpStatus.OK);
+            return ResponseEntity.ok(usuarioOptional.get());
         } else {
-            return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
     }
 
@@ -70,17 +80,17 @@ public class UsuarioController {
                         usuario.setSenha(hashSenha(usuarioAtualizado.getSenha()));
                     }
                     usuario.setTelefone(usuarioAtualizado.getTelefone());
-                    return new ResponseEntity<>(usuarioRepository.save(usuario), HttpStatus.OK);
+                    return ResponseEntity.ok(usuarioRepository.save(usuario));
                 })
-                .orElse(new ResponseEntity<>(null, HttpStatus.NOT_FOUND));
+                .orElse(ResponseEntity.notFound().build());
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarUsuario(@PathVariable Long id) {
         if (usuarioRepository.existsById(id)) {
             usuarioRepository.deleteById(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return ResponseEntity.noContent().build();
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return ResponseEntity.notFound().build();
         }
     }
 }

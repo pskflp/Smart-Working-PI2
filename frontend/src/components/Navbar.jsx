@@ -15,10 +15,22 @@ const Navbar = () => {
     <nav className={styles.navbar}>
       <div className={styles.navLinks}>
         {!user && <Link to="/">Home</Link>}
-        {user && <Link to="/dashboard">Dashboard</Link>}
-        {user && user.email === "admin@email.com" && <Link to="/admin">Registrar novo espaço</Link>}
+        
+        {/* Links para Usuário Comum */}
+        {user && user.email !== "admin@email.com" && (
+          <>
+            <Link to="/dashboard">Catálogo</Link>
+            <Link to="/minhas-reservas">Minhas Reservas</Link>
+            <Link to="/planos">Planos</Link>
+          </>
+        )}
+
+        {/* Links para Admin */}
+        {user && user.email === "admin@email.com" && (
+          <Link to="/admin">Painel Admin</Link>
+        )}
+
         {user && <Link to="/perfil">Perfil</Link>}
-        {user && user.email !== "admin@email.com" && <Link to="/minhas-reservas">Minhas Reservas</Link>}
       </div>
       <div>
         {user ? (

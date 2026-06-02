@@ -65,3 +65,6 @@ Este documento apresenta os resultados e a análise de performance da API utiliz
 
 Comparação leitura x escrita (200VUS)
 ![Resultados do Grafana](Smart-Working-PI2/imagem_2026-06-01_223522905.png)
+
+Comparativo de latência em vazão por VUS
+![Resultados do Grafana](Smart-Working-PI2/imagem_2026-06-01_225924792.png)

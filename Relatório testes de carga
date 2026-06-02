@@ -63,3 +63,4 @@ Este documento apresenta os resultados e a análise de performance da API utiliz
 * **Violação de SLA:** O limite de *threshold* estipulado para a escrita (`p(95) < 800`) foi rompido nos cenários de 100 e 200 VUs.
 * **Esgotamento de Recursos Compartilhados:** A estagnação da vazão máxima acompanhou o cenário geral da aplicação, indicando esgotamento de recursos (como *pool* de conexões do banco de dados ou saturação de CPU da API) quando sob estresse de 200 usuários simultâneos.
 
+![Resultados do Grafana](Smart-Working-PI2/imagem_2026-06-01_223522905.png)

@@ -37,8 +37,14 @@
     * **Concorrência:** 100 VUs simultâneos
 
 ### GRÁFICOS comparativos das medições feitas
-* **Gráfico Medição 1:** 
-* **Gráfico Medição 2:** 
+* **Gráfico Medição 1:**
+  
+  ![Gráfico Medição_grafana listagem_1](teste_listagem_grafana.png)
+
+
+* **Gráfico Medição 2:**
+  
+  ![Gráfico Medição_grafana listagem_1](teste_listagem_grafana2.png)
 
 ### Melhorias
 * **Implementação de Lazy Loading:** Adicionado `@JsonIgnore` ao campo `fotoBase64` e criado endpoint dedicado para fotos.
@@ -46,6 +52,12 @@
     * `src/main/java/com/example/smartworkingsystem/model/Espaco.java`
     * `src/main/java/com/example/smartworkingsystem/controller/EspacoController.java`
 
+### Conclusão: Lazy Loading de Fotos (Redução de Payload)
+  > Problema Original: A listagem de espaços trafegava gigabytes de dados (Base64)
+  desnecessariamente, saturando a rede e elevando a latência de 27ms para quase 10 segundos.
+  >
+  > Resultado da Melhoria: Ao implementar a anotação @JsonIgnore e um endpoint dedicado para fotos, o
+  volume de dados da listagem principal foi reduzido em 99.7% (de 4.9 GB para 13 MB)
 ---
 
 ## Criação de Reserva
@@ -86,11 +98,28 @@
     * **Concorrência:** 100 VUs simultâneos
 
 ### GRÁFICOS comparativos das medições feitas
-* **Gráfico Medição 1:** 
-* **Gráfico Medição 2:** 
+* **Gráfico Medição 1:**
+
+  ![Gráfico Medição_reserva_grafana 1](teste_reserva_grafana2.png)
+  
+* **Gráfico Medição 2:**
+
+  ![Gráfico Medição_reserva_grafana 1](teste_listagem_grafana2.png)
 
 ### Melhorias/otimizações
 * **Implementação de Optimistic Locking:** Adicionado campo `@Version` para gerenciar concorrência via Hibernate sem travar as tabelas.
 * **Arquivos modificados:**
     * `src/main/java/com/example/smartworkingsystem/model/Reserva.java`
     * `src/main/java/com/example/smartworkingsystem/model/Espaco.java`
+ 
+### Conclusão: Optimistic Locking (Concorrência e Integridade)
+  > Problema Original: Em cenários de alta concorrência (100+ usuários), o banco de dados sofria com
+  "Locks" pesados, pois várias transações tentavam validar e escrever nas mesmas tabelas
+  simultaneamente, gerando filas de espera.
+  >
+  > Resultado da Melhoria: A implementação do controle de versão via @Version permitiu que o
+  Hibernate gerenciasse conflitos de forma otimizada tornando-o mais resiliente a Deadlocks.
+
+
+
+

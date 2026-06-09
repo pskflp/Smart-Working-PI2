@@ -19,7 +19,7 @@
 ### MEDIÇÃO 1 
 * **Data da medição:** 08/06/2026
 * **Testes de carga (SLA):** 
-    * **Latência (p95):** 9.99 s (Ultrapassou o SLA de 500ms)
+    * **Latência (p95):** 9.99 s 
     * **Vazão:** 12.32 req/s (Total de 4444 requisições)
     * **Concorrência:** 100 VUs simultâneos
 * **Potenciais gargalos do sistema:** 

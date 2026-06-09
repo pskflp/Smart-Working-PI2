@@ -36,6 +36,8 @@
     * **Vazão:** 59.94 req/s (Aumento de 5x na capacidade de processamento)
     * **Concorrência:** 100 VUs simultâneos
 
+![Gráfico Medição 1](teste_listagem_terminal2.png)
+
 ### GRÁFICOS comparativos das medições feitas
 * **Gráfico Medição 1:**
   
@@ -96,6 +98,8 @@
     * **Latência (p95):** 2.16 s 
     * **Vazão:** 19.59 req/s
     * **Concorrência:** 100 VUs simultâneos
+ 
+![Gráfico Medição 1](teste_reserva_terminal2.png)
 
 ### GRÁFICOS comparativos das medições feitas
 * **Gráfico Medição 1:**

@@ -1,6 +1,6 @@
 # MEDIÇÕES DO SLA
 
-## Nome do Serviço 1: Listagem de Espaços
+## Listagem de Espaços
 **Tipo de operações:** Leitura (Consulta/Busca na base de dados)
 
 **Arquivos envolvidos:**
@@ -25,6 +25,9 @@
 * **Potenciais gargalos do sistema:** 
     * **Payload Gigante:** Tráfego de 4.6 GB devido ao envio do campo `fotoBase64` em todas as requisições de listagem.
     * **Filtragem em Memória:** Uso de `.stream().filter()` forçando o carregamento de toda a base na JVM.
+      
+ 
+![Gráfico Medição 1](teste_listagem_k6_terminal.png)
 
 ### MEDIÇÃO 2 (Pós-Otimizações: Lazy Loading)
 * **Data da medição:** 08/06/2026
@@ -45,7 +48,7 @@
 
 ---
 
-## Nome do Serviço 2: Criação de Reserva
+## Criação de Reserva
 **Tipo de operações:** Inserção 
 
 **Arquivos envolvidos:**
@@ -71,6 +74,9 @@
 * **Potenciais gargalos do sistema:** 
     * **Locking de Banco:** Concorrência pesada na validação de conflito de horário.
     * **Pool de Conexões:** Saturação em transações longas.
+      
+
+![Gráfico Medição 1](teste_reserva_k6terminal.png)
 
 ### MEDIÇÃO 2 
 * **Data da medição:** 08/06/2026

@@ -1,11 +1,13 @@
 package com.example.smartworkingsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 @Entity
 @Table(name = "espaco")
@@ -13,6 +15,9 @@ public class Espaco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Version
+    private Long version;
 
     private String nome;
     private String identificadorUnico;
@@ -22,6 +27,7 @@ public class Espaco {
     private Double precoMes;
     private String status;
 
+    @JsonIgnore
     @Column(columnDefinition = "LONGTEXT")
     private String fotoBase64;
 

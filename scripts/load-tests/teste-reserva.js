@@ -26,7 +26,7 @@ export const options = {
   },
   ext: {
     loadimpact: {
-      projectID: 1240627,
+      projectID: 7772049,
       name: "teste-reserva"
     }
   }

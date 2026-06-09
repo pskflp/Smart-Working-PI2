@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -25,6 +27,13 @@ public class EspacoController {
 
     @Autowired
     private EspacoRepository espacoRepository;
+
+    @GetMapping("/{id}/foto")
+    public ResponseEntity<Map<String, String>> obterFoto(@PathVariable Long id) {
+        return espacoRepository.findById(id)
+                .map(espaco -> ResponseEntity.ok(Collections.singletonMap("fotoBase64", espaco.getFotoBase64())))
+                .orElse(ResponseEntity.notFound().build());
+    }
 
     @GetMapping
     public ResponseEntity<List<Espaco>> listarEspacos(@RequestParam(required = false) String status) {
